@@ -9,9 +9,11 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+<div class="container">
 	<div class="footer">
-		<a href="<c:url value="/html/about.html" />"><button type="button">About</button></a>
-		<a href="<c:url value="/html/contact.html" />"><button type="button">Contacts</button></a>
+		<a href="<c:url value="/html/about.html" />"><button class ="btn" type="button">About</button></a>
+		<a href="<c:url value="/html/contact.html" />"><button class ="btn" type="button">Contacts</button></a>
 	</div>
+</div>
 </body>
 </html>

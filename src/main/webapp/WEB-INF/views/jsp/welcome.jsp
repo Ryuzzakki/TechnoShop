@@ -15,14 +15,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-    <style>
-        /* Make the image fully responsive */
-        .carousel-inner img {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -46,41 +38,82 @@
     </ul>
 </div>
 
-<div id="demo" class="carousel slide" data-ride="carousel">
+<div class="container">
 
-    <!-- Indicators -->
-    <ul class="carousel-indicators">
-        <li data-target="#demo" data-slide-to="0" class="active"></li>
-        <li data-target="#demo" data-slide-to="1"></li>
-    </ul>
-
-    <!-- The slideshow -->
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="/img/1.jpg" alt="Los Angeles" width="1100" height="500">
+    <div class="row">
+        <div class="col-sm-8">
+            <h2 class="mt-4">What Is My WebApp</h2>
+            <p>This is my website for selling Computers, Phones and other stuff</p>
         </div>
-        <div class="carousel-item">
-            <img src="/img/2.jpg" alt="Chicago" width="1100" height="500">
+        <div class="col-sm-4">
+            <h2 class="mt-4">Contact Me</h2>
+            <address>
+                <strong>Ivelin Iliev</strong>
+                <br>TU - Sofia
+                <br>
+            </address>
+            <address>
+                Email: <a href="mailto:#">ivelin.iliev@gmail.com</a>
+            </address>
         </div>
     </div>
+    <!-- /.row -->
 
-    <!-- Left and right controls -->
-    <a class="carousel-control-prev" href="#demo" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#demo" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </a>
+    <div class="row">
+        <div class="col-sm-4 my-4">
+            <div class="card">
+                <img class="card-img-top" src="/img/laptop 1.png" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">Computers</h4>
+                    <p></p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-info">Find Out More!</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 my-4">
+            <div class="card">
+                <img class="card-img-top" src="/img/phone 2.jpg" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">Phones</h4>
+                    <p class="card-text"></p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-info">Find Out More!</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 my-4">
+            <div class="card">
+                <img class="card-img-top" src="/img/charger 3.jpg" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">Others</h4>
+                    <p class="card-text"></p>
+                </div>
+                <div class="card-footer">
+                    <a href="/computers" class="btn btn-info">Find Out More!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
 </div>
-
-<div class="footer">
-    <a href="<c:url value="/html/about.html" />">
-        <button type="button">About</button>
-    </a>
-    <a href="<c:url value="/html/contact.html" />">
-        <button type="button">Contacts</button>
-    </a>
-</div>
+<!-- /.container -->
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Welcome to my Techno Shop
+            <a href="<c:url value="/html/about.html" />">
+                <button class="btn" type="button">About</button>
+            </a>
+            <a href="<c:url value="/html/contact.html" />">
+                <button class="btn" type="button">Contacts</button>
+            </a>
+        </p>
+    </div>
+    <!-- /.container -->
+</footer>
 
 </body>
 </html>
