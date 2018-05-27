@@ -8,8 +8,8 @@ public class Product {
 	private long id;
 	private String name;
 	private double price;
-	private HashSet<Ingredient> ingredients = new LinkedHashSet<>();
-	private HashSet<Ingredient> defaultIng = new LinkedHashSet<>();
+	private HashSet<Part> parts = new LinkedHashSet<>();
+	private HashSet<Part> defaultIng = new LinkedHashSet<>();
 	private String productPicture;
 	private int category = 0;
 	private String size = "medium";
@@ -54,11 +54,11 @@ public class Product {
 		this.id = id;
 	}
 
-	public HashSet<Ingredient> getIngredients() {
-		return ingredients;
+	public HashSet<Part> getParts() {
+		return parts;
 	}
 
-	public HashSet<Ingredient> getDefaultIngredients() {
+	public HashSet<Part> getDefaultIngredients() {
 		return defaultIng;
 	}
 
@@ -66,12 +66,12 @@ public class Product {
 		return id;
 	}
 
-	public void setIngredients(HashSet<Ingredient> ingredients) {
-		this.ingredients = ingredients;
+	public void setParts(HashSet<Part> parts) {
+		this.parts = parts;
 	}
 
-	public void setDefIngredients(HashSet<Ingredient> ingredients) {
-		this.defaultIng = ingredients;
+	public void setDefIngredients(HashSet<Part> parts) {
+		this.defaultIng = parts;
 	}
 
 	public String getProductPicture() {
@@ -82,22 +82,22 @@ public class Product {
 		this.productPicture = productPicture;
 	}
 
-	public void addIngredient(Ingredient ingredient) {
-		if(!this.ingredients.contains(ingredient)) {
-			if (!this.defaultIng.contains(ingredient)) {
-				this.price += ingredient.getPrice();
+	public void addIngredient(Part part) {
+		if(!this.parts.contains(part)) {
+			if (!this.defaultIng.contains(part)) {
+				this.price += part.getPrice();
 				price = Math.round(price * 100);
 				price = price / 100;
 			}
-			this.ingredients.add(ingredient);
+			this.parts.add(part);
 		}
 	}
 
-	public void removeIngredient(Ingredient ingredient) {
-		if (this.ingredients.contains(ingredient)) {
-			this.ingredients.remove(ingredient);
-			if (!this.defaultIng.contains(ingredient)) {
-				this.price -= ingredient.getPrice();
+	public void removeIngredient(Part part) {
+		if (this.parts.contains(part)) {
+			this.parts.remove(part);
+			if (!this.defaultIng.contains(part)) {
+				this.price -= part.getPrice();
 				price = Math.round(price * 100);
 				price = price/100;
 			}

@@ -1,12 +1,12 @@
 package com.store.model;
 
-public class Ingredient {
+public class Part {
 
 	private long id;
 	private String name;
 	private double price;
 
-	public Ingredient(long id, String name, double price) {
+	public Part(long id, String name, double price) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
@@ -46,7 +46,7 @@ public class Ingredient {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Ingredient other = (Ingredient) obj;
+		Part other = (Part) obj;
 		if (id != other.id)
 			return false;
 		if (name == null) {

@@ -67,7 +67,7 @@
                                     <h4 class="title">${ product.name }</h4>
                                     <p class="desc">Price: ${ product.price }</p>
                                     <div class="rating-wrap">
-                                        <div class="label-rating"><c:forEach items="${product.ingredients}" var="ingr">
+                                        <div class="label-rating"><c:forEach items="${product.parts}" var="ingr">
                                             <c:out value="${ ingr.name }"></c:out>
                                         </c:forEach></div>
                                     </div>

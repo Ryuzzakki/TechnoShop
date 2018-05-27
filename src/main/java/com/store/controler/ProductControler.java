@@ -12,15 +12,13 @@ import java.util.HashSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.http.HTTPBinding;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.fasterxml.jackson.annotation.JsonFormat.Value;
-import com.store.model.Ingredient;
+import com.store.model.Part;
 import com.store.model.Order;
 import com.store.model.Product;
 import com.store.model.Restaurant;
@@ -81,9 +79,9 @@ public class ProductControler {
 			Order order = (Order) request.getSession().getAttribute("order");
 			Product p = productDao.getProduct(Long.parseLong(id));
 
-			HashSet<Ingredient> defaultIngredients = new HashSet<>();
-			defaultIngredients.addAll(p.getIngredients());
-			p.setDefIngredients(defaultIngredients);
+			HashSet<Part> defaultParts = new HashSet<>();
+			defaultParts.addAll(p.getParts());
+			p.setDefIngredients(defaultParts);
 
 			order.addToProducts(p);
 		} catch (NumberFormatException | SQLException e) {

@@ -11,12 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.store.model.Ingredient;
+import com.store.model.Part;
 import com.store.model.Product;
-import com.store.model.Restaurant;
-import com.store.model.dao.IngredientDao;
+import com.store.model.dao.PartDao;
 import com.store.model.dao.ProductDao;
-import com.store.model.dao.RestaurantDao;
 
 
 @Controller
@@ -27,7 +25,7 @@ public class WelcomeControler {
 	@Autowired
 	private ProductDao productDao;
 	@Autowired
-	private IngredientDao ingredientDao;
+	private PartDao partDao;
 
 	
 	@RequestMapping(value = "*", method = RequestMethod.GET)
@@ -48,11 +46,11 @@ public class WelcomeControler {
 		synchronized (servletContext) {
 			if (servletContext.getAttribute("products") == null) {
 				ArrayList<Product> products = new ArrayList<>();
-				ArrayList<Ingredient> ingredients = new ArrayList<>();
+				ArrayList<Part> parts = new ArrayList<>();
 				
 				try {
 					products = productDao.getAllProducts();
-					ingredients = ingredientDao.getAllIngredients();
+					parts = partDao.getAllIngredients();
 					for (Product p : products) {
 						System.out.println(p);
 						
@@ -61,7 +59,7 @@ public class WelcomeControler {
 					return "error";
 				}
 				servletContext.setAttribute("products", products);
-				servletContext.setAttribute("ingredients", ingredients);
+				servletContext.setAttribute("parts", parts);
 			}
 		}
 		

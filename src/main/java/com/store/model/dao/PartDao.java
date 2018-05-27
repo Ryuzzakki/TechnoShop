@@ -6,52 +6,51 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.store.model.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.store.model.Ingredient;
-
 @Component
-public class IngredientDao {
+public class PartDao {
 	
 	@Autowired
 	private DBManager dbManager;
 
 
-	public Ingredient getIngredient(long ingredientId) throws SQLException {
+	public Part getIngredient(long ingredientId) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
 				.prepareStatement("SELECT * FROM pizza_store.ingredients where id = ?");
 		preparedStatement.setLong(1, ingredientId);
-		Ingredient ingredient = null;
+		Part part = null;
 		ResultSet set = preparedStatement.executeQuery();
 		while (set.next()) {
 			long id = set.getLong("id");
 			String ingredientName = set.getString("name");
 			double ingredientPrice = set.getDouble("price");
-			ingredient = new Ingredient(id, ingredientName, ingredientPrice);
+			part = new Part(id, ingredientName, ingredientPrice);
 
 		}
 
-		return ingredient;
+		return part;
 
 	}
 
-	public ArrayList<Ingredient> getAllIngredients() throws SQLException {
+	public ArrayList<Part> getAllIngredients() throws SQLException {
 		Connection con =dbManager.getConnection();
 		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.ingredients");
-		Ingredient ing = null;
-		ArrayList<Ingredient> ingredients = new ArrayList<>();
+		Part ing = null;
+		ArrayList<Part> parts = new ArrayList<>();
 		ResultSet set = preparedStatement.executeQuery();
 		while (set.next()) {
 			long id = set.getLong("id");
 			String productName = set.getString("name");
 			double productPrice = set.getDouble("price");
-			ing = new Ingredient(id, productName, productPrice);
-			ingredients.add(ing);
+			ing = new Part(id, productName, productPrice);
+			parts.add(ing);
 
 		}
-		return ingredients;
+		return parts;
 
 	}
 

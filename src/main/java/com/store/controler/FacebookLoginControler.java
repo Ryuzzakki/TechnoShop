@@ -11,12 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.store.model.Ingredient;
+import com.store.model.Part;
 import com.store.model.Product;
 import com.store.model.Restaurant;
 import com.store.model.User;
 import com.store.model.UserException;
-import com.store.model.dao.IngredientDao;
+import com.store.model.dao.PartDao;
 import com.store.model.dao.ProductDao;
 import com.store.model.dao.RestaurantDao;
 import com.store.model.dao.UserDao;
@@ -29,7 +29,7 @@ public class FacebookLoginControler {
 	@Autowired
 	private ProductDao productDao;
 	@Autowired
-	private IngredientDao ingredientDao;
+	private PartDao partDao;
 	@Autowired
 	UserDao userDao;
 	@Autowired
@@ -59,13 +59,13 @@ public class FacebookLoginControler {
 					if (servletContext.getAttribute("products") == null
 							|| servletContext.getAttribute("restaurants") == null) {
 						ArrayList<Product> products = new ArrayList<>();
-						ArrayList<Ingredient> ingredients = new ArrayList<>();
+						ArrayList<Part> parts = new ArrayList<>();
 						ArrayList<Restaurant> restaurants = new ArrayList<>();
 						products = productDao.getAllProducts();
-						ingredients = ingredientDao.getAllIngredients();
+						parts = partDao.getAllIngredients();
 						restaurants = restaurant.getAllRestaurants();
 						servletContext.setAttribute("products", products);
-						servletContext.setAttribute("ingredients", ingredients);
+						servletContext.setAttribute("parts", parts);
 						servletContext.setAttribute("restaurants", restaurants);
 					}
 				}

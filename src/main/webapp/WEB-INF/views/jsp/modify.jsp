@@ -27,8 +27,8 @@
                             ${ product.key.name }
                     </h2>
                     <p>
-                        <c:forEach items="${product.key.ingredients}" var="ingredient">
-                            <c:out value="${ingredient.name}"></c:out>
+                        <c:forEach items="${product.key.parts}" var="part">
+                            <c:out value="${part.name}"></c:out>
                         </c:forEach>
                     </p>
                     <p>
@@ -50,25 +50,25 @@
 
 
                             <c:set var="currentProduct" value="${param.productId}" scope="page"/>
-                            <c:forEach items="${applicationScope.ingredients}" var="ingredient">
+                            <c:forEach items="${applicationScope.parts}" var="part">
 
                                 <form action="modify" method="post">
-                                    <input type="hidden" name="ingredientId" value="${ ingredient.id }"/>
+                                    <input type="hidden" name="ingredientId" value="${ part.id }"/>
                                     <input type="hidden" name="productId" value="${ currentProduct }"/>
                                     <input class="btn btn-sm btn-default" type="submit" name="cart_submit"
-                                           value=" ${ ingredient.name }"/>
+                                           value=" ${ part.name }"/>
                                 </form>
                                 <br>
 
                                 <c:forEach items="${sessionScope.order.products}" var="product">
                                     <c:if test="${ product.key.id == param.productId }">
-                                        <c:forEach items="${product.key.ingredients}" var="ing">
+                                        <c:forEach items="${product.key.parts}" var="ing">
 
 
-                                            <c:if test="${ ing.id == ingredient.id }">
+                                            <c:if test="${ ing.id == part.id }">
                                                 <form action="removeing" method="post">
                                                     <input type="hidden" name="ingredientId"
-                                                           value="${ ingredient.id }"/>
+                                                           value="${ part.id }"/>
                                                     <input type="hidden" name="productId" value="${ currentProduct }"/>
                                                     <input class="btn btn-sm btn-default" type="submit" name="remove_ingredient"
                                                            value="Remove"/>

@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.store.model.Ingredient;
 import com.store.model.Order;
 import com.store.model.Product;
 import com.store.model.Restaurant;

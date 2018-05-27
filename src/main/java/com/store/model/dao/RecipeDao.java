@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 
+import com.store.model.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.store.model.Ingredient;
 import com.store.model.Product;
 
 @Component
@@ -18,22 +18,22 @@ public class RecipeDao {
 	@Autowired
 	private DBManager dbManager;
 	@Autowired
-	private IngredientDao ingredientDao;
+	private PartDao partDao;
 
-	public HashSet<Ingredient> getAllIngredientsFromRecipe(long order_id, long product_id) throws SQLException {
+	public HashSet<Part> getAllIngredientsFromRecipe(long order_id, long product_id) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
 				.prepareStatement("SELECT * FROM pizza_store.recipe where product_id = ? and order_id = ? ");
 		preparedStatement.setLong(1, product_id);
 		preparedStatement.setLong(2, order_id);
-		HashSet<Ingredient> ingredients = new HashSet<>();
+		HashSet<Part> parts = new HashSet<>();
 		ResultSet set = preparedStatement.executeQuery();
 		while (set.next()) {
 			long ingredientID = set.getLong("ingredient_id");
-			Ingredient ingredient = ingredientDao.getIngredient(ingredientID);
-			ingredients.add(ingredient);
+			Part part = partDao.getIngredient(ingredientID);
+			parts.add(part);
 		}
-		return ingredients;
+		return parts;
 
 	}
 

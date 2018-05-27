@@ -62,8 +62,8 @@
 
 
                     <td>
-                        <c:forEach var="ingredient" items="${product.key.ingredients}">
-                            <c:out value="${ingredient.name }"></c:out>
+                        <c:forEach var="part" items="${product.key.parts}">
+                            <c:out value="${part.name }"></c:out>
                         </c:forEach>
                     </td>
                     <td class="col-sm-1 col-md-1 text-center"><c:out value="${ product.key.price }"></c:out></td>

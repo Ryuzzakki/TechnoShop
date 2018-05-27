@@ -5,15 +5,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.store.model.Ingredient;
+import com.store.model.Part;
 import com.store.model.Product;
 
 @Component
@@ -34,9 +32,9 @@ public class ProductDao {
 			double productPrice = set.getDouble("price");
 			String productPic = set.getString("pictureUrl");
 			int category = set.getInt("category");
-			HashSet<Ingredient> ings = getIngredientsByProductId(id);
+			HashSet<Part> ings = getIngredientsByProductId(id);
 			product = new Product(id, productName, productPrice, category);
-			product.setIngredients(ings);
+			product.setParts(ings);
 			product.setProductPicture(productPic);
 		}
 
@@ -55,13 +53,13 @@ public class ProductDao {
 			double productPrice = set.getDouble("price");
 			int category = set.getInt("category");
 			product = new Product(id, productName, productPrice, category);
-			HashSet<Ingredient> ingredients = getIngredientsByProductId(id);
+			HashSet<Part> parts = getIngredientsByProductId(id);
 
-			HashSet<Ingredient> defaultIngredients = new HashSet<>();
-			defaultIngredients.addAll(ingredients);
+			HashSet<Part> defaultParts = new HashSet<>();
+			defaultParts.addAll(parts);
 
-			product.setIngredients(ingredients);
-			product.setDefIngredients(defaultIngredients);
+			product.setParts(parts);
+			product.setDefIngredients(defaultParts);
 			products.add(product);
 
 		}
@@ -69,24 +67,24 @@ public class ProductDao {
 
 	}
 
-	public HashSet<Ingredient> getIngredientsByProductId(long productId) throws SQLException {
+	public HashSet<Part> getIngredientsByProductId(long productId) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con.prepareStatement(
 				"SELECT ingredients.id, ingredients.name, ingredients.price FROM ingredients JOIN product_has_ingredient ON product_has_ingredient.ingredient_id = ingredients.id WHERE product_has_ingredient.product_id = ?");
 		preparedStatement.setLong(1, productId);
-		Ingredient ingredient = null;
-		HashSet<Ingredient> ingredients = new HashSet<>();
+		Part part = null;
+		HashSet<Part> parts = new HashSet<>();
 		ResultSet set = preparedStatement.executeQuery();
 		while (set.next()) {
 			long id = set.getLong("id");
 			String productName = set.getString("name");
 			double productPrice = set.getDouble("price");
-			ingredient = new Ingredient(id, productName, productPrice);
-			ingredients.add(ingredient);
+			part = new Part(id, productName, productPrice);
+			parts.add(part);
 
 		}
 
-		return ingredients;
+		return parts;
 	}
 
 	public ArrayList<Product> getFavoritesByUserId(long userId) throws SQLException {

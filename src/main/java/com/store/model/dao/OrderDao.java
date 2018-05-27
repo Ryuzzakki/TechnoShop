@@ -12,7 +12,7 @@ import java.util.HashSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.store.model.Ingredient;
+import com.store.model.Part;
 import com.store.model.Order;
 import com.store.model.Product;
 import com.store.model.Restaurant;
@@ -65,7 +65,7 @@ public class OrderDao {
 			Order newOrderInDB = getOrderById(orderId);
 			for (Product p : map.keySet()) {
 				orderDetailsDao.addProductToOrderDetails(p, newOrderInDB, map.get(p));
-				for (Ingredient ing : p.getIngredients()) {
+				for (Part ing : p.getParts()) {
 					recipeDao.addIngredientToRecipe(newOrderInDB.getId(), ing.getId(), p);
 				}
 			}
