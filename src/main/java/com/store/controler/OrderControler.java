@@ -19,7 +19,7 @@ import com.store.model.User;
 import com.store.model.UserException;
 import com.store.model.dao.OrderDao;
 import com.store.model.dao.OrderDetailsDao;
-import com.store.model.dao.RecipeDao;
+import com.store.model.dao.CustomAddonDao;
 import com.store.model.dao.UserDao;
 
 @Controller
@@ -32,7 +32,7 @@ public class OrderControler {
 	@Autowired
 	UserDao userDao;
 	@Autowired
-	RecipeDao recipeDao;
+    CustomAddonDao customAddonDao;
 
 	@RequestMapping(value = "/makeOrder", method = RequestMethod.POST)
 	public String makeOrderInDB(HttpServletRequest req) {

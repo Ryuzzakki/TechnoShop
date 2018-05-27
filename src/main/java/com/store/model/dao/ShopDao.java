@@ -16,11 +16,11 @@ public class ShopDao {
 	@Autowired
 	private DBManager dbManager;
 
-	public Shop getShop(long RestorantId) throws SQLException {
+	public Shop getShop(long ShopId) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
 				.prepareStatement("SELECT * FROM techno_store.shops where id = ?");
-		preparedStatement.setLong(1, RestorantId);
+		preparedStatement.setLong(1, ShopId);
 
 		Shop shop = null;
 		ResultSet set = preparedStatement.executeQuery();

@@ -33,7 +33,7 @@ public class OrderDao {
 	@Autowired
 	private ShopDao shopDao;
 	@Autowired
-	private RecipeDao recipeDao;
+	private CustomAddonDao customAddonDao;
 
 	// get user and shop from session
 	public long createOrder(User u, Shop r, String address) throws SQLException {
@@ -66,7 +66,7 @@ public class OrderDao {
 			for (Product p : map.keySet()) {
 				orderDetailsDao.addProductToOrderDetails(p, newOrderInDB, map.get(p));
 				for (Part ing : p.getParts()) {
-					recipeDao.addPartToRecipe(newOrderInDB.getId(), ing.getId(), p);
+					customAddonDao.addPartToCustomAddon(newOrderInDB.getId(), ing.getId(), p);
 				}
 			}
 			updateOrderPrice(price, newOrderInDB.getId());
@@ -118,10 +118,10 @@ public class OrderDao {
 		while (set.next()) {
 			long orderId = set.getLong("id");
 			long userId = user_id;
-			long restorantId = set.getLong("shop_id");
+			long shopId = set.getLong("shop_id");
 			double totalPrice = set.getDouble("total_price");
 			LocalDateTime dateTime = set.getTimestamp("order_date").toLocalDateTime();
-			Order order = new Order(userDao.getUser(userId), shopDao.getShop(restorantId), totalPrice,
+			Order order = new Order(userDao.getUser(userId), shopDao.getShop(shopId), totalPrice,
 					dateTime, orderDetailsDao.getAllProductsFromOrder(orderId));
 			orders.add(order);
 
@@ -140,10 +140,10 @@ public class OrderDao {
 		while (set.next()) {
 			long orderId = set.getLong("id");
 			long userId = set.getLong("user_id");
-			long restorantId = set.getLong("shop_id");
+			long shopId = set.getLong("shop_id");
 			double totalPrice = set.getDouble("total_price");
 			LocalDateTime dateTime = set.getTimestamp("order_date").toLocalDateTime();
-			order = new Order(orderId, userDao.getUser(userId), shopDao.getShop(restorantId), totalPrice,
+			order = new Order(orderId, userDao.getUser(userId), shopDao.getShop(shopId), totalPrice,
 					dateTime);
 		}
 
