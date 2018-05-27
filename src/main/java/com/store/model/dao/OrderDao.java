@@ -66,7 +66,7 @@ public class OrderDao {
 			for (Product p : map.keySet()) {
 				orderDetailsDao.addProductToOrderDetails(p, newOrderInDB, map.get(p));
 				for (Part ing : p.getParts()) {
-					recipeDao.addIngredientToRecipe(newOrderInDB.getId(), ing.getId(), p);
+					recipeDao.addPartToRecipe(newOrderInDB.getId(), ing.getId(), p);
 				}
 			}
 			updateOrderPrice(price, newOrderInDB.getId());

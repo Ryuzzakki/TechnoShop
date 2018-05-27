@@ -62,7 +62,7 @@ public class FacebookLoginControler {
 						ArrayList<Part> parts = new ArrayList<>();
 						ArrayList<Restaurant> restaurants = new ArrayList<>();
 						products = productDao.getAllProducts();
-						parts = partDao.getAllIngredients();
+						parts = partDao.getAllParts();
 						restaurants = restaurant.getAllRestaurants();
 						servletContext.setAttribute("products", products);
 						servletContext.setAttribute("parts", parts);

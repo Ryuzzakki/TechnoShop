@@ -50,12 +50,13 @@ public class WelcomeControler {
 				
 				try {
 					products = productDao.getAllProducts();
-					parts = partDao.getAllIngredients();
+					parts = partDao.getAllParts();
 					for (Product p : products) {
 						System.out.println(p);
 						
 					}
 				} catch (SQLException e) {
+					System.out.println(e);
 					return "error";
 				}
 				servletContext.setAttribute("products", products);

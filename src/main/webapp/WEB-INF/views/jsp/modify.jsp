@@ -53,7 +53,7 @@
                             <c:forEach items="${applicationScope.parts}" var="part">
 
                                 <form action="modify" method="post">
-                                    <input type="hidden" name="ingredientId" value="${ part.id }"/>
+                                    <input type="hidden" name="partId" value="${ part.id }"/>
                                     <input type="hidden" name="productId" value="${ currentProduct }"/>
                                     <input class="btn btn-sm btn-default" type="submit" name="cart_submit"
                                            value=" ${ part.name }"/>
@@ -67,10 +67,10 @@
 
                                             <c:if test="${ ing.id == part.id }">
                                                 <form action="removeing" method="post">
-                                                    <input type="hidden" name="ingredientId"
+                                                    <input type="hidden" name="partId"
                                                            value="${ part.id }"/>
                                                     <input type="hidden" name="productId" value="${ currentProduct }"/>
-                                                    <input class="btn btn-sm btn-default" type="submit" name="remove_ingredient"
+                                                    <input class="btn btn-sm btn-default" type="submit" name="remove_part"
                                                            value="Remove"/>
                                                 </form>
                                                 <br>

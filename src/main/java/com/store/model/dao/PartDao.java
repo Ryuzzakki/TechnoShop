@@ -17,18 +17,18 @@ public class PartDao {
 	private DBManager dbManager;
 
 
-	public Part getIngredient(long ingredientId) throws SQLException {
+	public Part getPart(long partId) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("SELECT * FROM pizza_store.ingredients where id = ?");
-		preparedStatement.setLong(1, ingredientId);
+				.prepareStatement("SELECT * FROM pizza_store.parts where id = ?");
+		preparedStatement.setLong(1, partId);
 		Part part = null;
 		ResultSet set = preparedStatement.executeQuery();
 		while (set.next()) {
 			long id = set.getLong("id");
-			String ingredientName = set.getString("name");
-			double ingredientPrice = set.getDouble("price");
-			part = new Part(id, ingredientName, ingredientPrice);
+			String partName = set.getString("name");
+			double partPrice = set.getDouble("price");
+			part = new Part(id, partName, partPrice);
 
 		}
 
@@ -36,9 +36,9 @@ public class PartDao {
 
 	}
 
-	public ArrayList<Part> getAllIngredients() throws SQLException {
+	public ArrayList<Part> getAllParts() throws SQLException {
 		Connection con =dbManager.getConnection();
-		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.ingredients");
+		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.parts");
 		Part ing = null;
 		ArrayList<Part> parts = new ArrayList<>();
 		ResultSet set = preparedStatement.executeQuery();

@@ -58,7 +58,7 @@ public class Product {
 		return parts;
 	}
 
-	public HashSet<Part> getDefaultIngredients() {
+	public HashSet<Part> getDefaultParts() {
 		return defaultIng;
 	}
 
@@ -70,7 +70,7 @@ public class Product {
 		this.parts = parts;
 	}
 
-	public void setDefIngredients(HashSet<Part> parts) {
+	public void setDefParts(HashSet<Part> parts) {
 		this.defaultIng = parts;
 	}
 
@@ -82,7 +82,7 @@ public class Product {
 		this.productPicture = productPicture;
 	}
 
-	public void addIngredient(Part part) {
+	public void addPart(Part part) {
 		if(!this.parts.contains(part)) {
 			if (!this.defaultIng.contains(part)) {
 				this.price += part.getPrice();
@@ -93,7 +93,7 @@ public class Product {
 		}
 	}
 
-	public void removeIngredient(Part part) {
+	public void removePart(Part part) {
 		if (this.parts.contains(part)) {
 			this.parts.remove(part);
 			if (!this.defaultIng.contains(part)) {

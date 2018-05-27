@@ -20,7 +20,7 @@ public class RecipeDao {
 	@Autowired
 	private PartDao partDao;
 
-	public HashSet<Part> getAllIngredientsFromRecipe(long order_id, long product_id) throws SQLException {
+	public HashSet<Part> getAllPartsFromRecipe(long order_id, long product_id) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
 				.prepareStatement("SELECT * FROM pizza_store.recipe where product_id = ? and order_id = ? ");
@@ -29,21 +29,21 @@ public class RecipeDao {
 		HashSet<Part> parts = new HashSet<>();
 		ResultSet set = preparedStatement.executeQuery();
 		while (set.next()) {
-			long ingredientID = set.getLong("ingredient_id");
-			Part part = partDao.getIngredient(ingredientID);
+			long partID = set.getLong("part_id");
+			Part part = partDao.getPart(partID);
 			parts.add(part);
 		}
 		return parts;
 
 	}
 
-	public void addIngredientToRecipe(long order_id, long ingredient_id, Product p) throws SQLException {
+	public void addPartToRecipe(long order_id, long part_id, Product p) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("INSERT INTO pizza_store.recipe (order_id, product_id, ingredient_id) VALUES (?,(SELECT id FROM pizza_store.products WHERE name = ?), ?)");
+				.prepareStatement("INSERT INTO pizza_store.recipe (order_id, product_id, part_id) VALUES (?,(SELECT id FROM pizza_store.products WHERE name = ?), ?)");
 		preparedStatement.setLong(1, order_id);
 		preparedStatement.setString(2, p.getName());
-		preparedStatement.setLong(3, ingredient_id);
+		preparedStatement.setLong(3, part_id);
 		preparedStatement.executeUpdate();
 	}
 

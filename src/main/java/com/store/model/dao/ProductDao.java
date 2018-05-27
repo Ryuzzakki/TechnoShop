@@ -32,7 +32,7 @@ public class ProductDao {
 			double productPrice = set.getDouble("price");
 			String productPic = set.getString("pictureUrl");
 			int category = set.getInt("category");
-			HashSet<Part> ings = getIngredientsByProductId(id);
+			HashSet<Part> ings = getPartsByProductId(id);
 			product = new Product(id, productName, productPrice, category);
 			product.setParts(ings);
 			product.setProductPicture(productPic);
@@ -53,13 +53,13 @@ public class ProductDao {
 			double productPrice = set.getDouble("price");
 			int category = set.getInt("category");
 			product = new Product(id, productName, productPrice, category);
-			HashSet<Part> parts = getIngredientsByProductId(id);
+			HashSet<Part> parts = getPartsByProductId(id);
 
 			HashSet<Part> defaultParts = new HashSet<>();
 			defaultParts.addAll(parts);
 
 			product.setParts(parts);
-			product.setDefIngredients(defaultParts);
+			product.setDefParts(defaultParts);
 			products.add(product);
 
 		}
@@ -67,10 +67,10 @@ public class ProductDao {
 
 	}
 
-	public HashSet<Part> getIngredientsByProductId(long productId) throws SQLException {
+	public HashSet<Part> getPartsByProductId(long productId) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con.prepareStatement(
-				"SELECT ingredients.id, ingredients.name, ingredients.price FROM ingredients JOIN product_has_ingredient ON product_has_ingredient.ingredient_id = ingredients.id WHERE product_has_ingredient.product_id = ?");
+				"SELECT parts.id, parts.name, parts.price FROM parts JOIN product_has_part ON product_has_part.part_id = parts.id WHERE product_has_part.product_id = ?");
 		preparedStatement.setLong(1, productId);
 		Part part = null;
 		HashSet<Part> parts = new HashSet<>();

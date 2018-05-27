@@ -81,7 +81,7 @@ public class ProductControler {
 
 			HashSet<Part> defaultParts = new HashSet<>();
 			defaultParts.addAll(p.getParts());
-			p.setDefIngredients(defaultParts);
+			p.setDefParts(defaultParts);
 
 			order.addToProducts(p);
 		} catch (NumberFormatException | SQLException e) {

@@ -25,11 +25,11 @@ public class PartControler {
 	ProductDao productDao;
 
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String addIngredient(HttpServletRequest request, RedirectAttributes redirectAttributes) {
+	public String addPart(HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		if (request.getSession().getAttribute("order") == null) {
 			return "login";
 		}
-		String ingredientid = request.getParameter("ingredientId");
+		String partid = request.getParameter("partId");
 		String currentId = request.getParameter("productId");
 		Order order = (Order) request.getSession().getAttribute("order");
 		Long id = Long.valueOf(currentId);
@@ -40,10 +40,10 @@ public class PartControler {
 			if (request.getSession().getAttribute("modifiedProduct" + currentId) == null) {
 				request.getSession().setAttribute("modifiedProduct" + currentId, product);
 			}
-			if (ingredientid != null) {
-				part = partDao.getIngredient(Long.valueOf(ingredientid));
+			if (partid != null) {
+				part = partDao.getPart(Long.valueOf(partid));
 				product = (Product) request.getSession().getAttribute("modifiedProduct" + currentId);
-				product.addIngredient(part);
+				product.addPart(part);
 			}
 		} catch (SQLException e) {
 			return "error";
@@ -54,17 +54,17 @@ public class PartControler {
 	}
 
 	@RequestMapping(value = "/removeing", method = RequestMethod.POST)
-	public String removeIngredient(HttpServletRequest request) {
+	public String removePart(HttpServletRequest request) {
 		if (request.getSession().getAttribute("order") == null) {
 			return "login";
 		}
 		String product = request.getParameter("productId");
-		String ingredient = request.getParameter("ingredientId");
+		String part = request.getParameter("partId");
 		Order order = (Order) request.getSession().getAttribute("order");
 		try {
 			Product currentProduct = order.findProductInMap(Long.valueOf(product));
-			Part currentPart = partDao.getIngredient(Long.valueOf(ingredient));
-			currentProduct.removeIngredient(currentPart);
+			Part currentPart = partDao.getPart(Long.valueOf(part));
+			currentProduct.removePart(currentPart);
 		} catch (NumberFormatException | SQLException e) {
 			return "error";
 		}
