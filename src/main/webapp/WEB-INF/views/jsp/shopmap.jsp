@@ -62,12 +62,12 @@
 				<th>Action</th>
 		</thead>
 		<tbody>
-			<c:forEach items="${applicationScope.restaurants}" var="restaurant">
+			<c:forEach items="${applicationScope.shops}" var="shop">
 				<tr>
-				<td><c:out value="${ restaurant.name }"></c:out></td>
-				<td><c:out value="${ restaurant.location } "></c:out></td>
-				<td><form action="pickFromRestaurant" method="post">
-						<input type="hidden" name="restaurantId" value="${ restaurant.id }" />
+				<td><c:out value="${ shop.name }"></c:out></td>
+				<td><c:out value="${ shop.location } "></c:out></td>
+				<td><form action="pickFromShop" method="post">
+						<input type="hidden" name="shopId" value="${ shop.id }" />
 						<input type="submit" class="btn" name="address_submit" value="Take from" />
 					</form></td>
 				</tr>

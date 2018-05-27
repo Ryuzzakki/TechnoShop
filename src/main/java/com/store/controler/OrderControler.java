@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.store.model.Order;
 import com.store.model.Product;
-import com.store.model.Restaurant;
+import com.store.model.Shop;
 import com.store.model.User;
 import com.store.model.UserException;
 import com.store.model.dao.OrderDao;
@@ -41,7 +41,7 @@ public class OrderControler {
 		}
 		Order order = (Order) req.getSession().getAttribute("order");
 		User u = (User) req.getSession().getAttribute("user");
-		Restaurant r = (Restaurant) req.getSession().getAttribute("restaurant");
+		Shop r = (Shop) req.getSession().getAttribute("shop");
 		String deliveryAddress = (String) req.getSession().getAttribute("userAddress");
 		double price = (double) req.getSession().getAttribute("totalPriceWithDiscount");
 		HashMap<Product, Integer> map = order.getProducts();

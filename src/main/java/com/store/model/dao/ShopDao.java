@@ -6,54 +6,53 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.store.model.Shop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.store.model.Restaurant;
-
 @Component
-public class RestaurantDao {
+public class ShopDao {
 	
 	@Autowired
 	private DBManager dbManager;
 
-	public Restaurant getRestaurant(long RestorantId) throws SQLException {
+	public Shop getShop(long RestorantId) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("SELECT * FROM techno_store.restaurants where id = ?");
+				.prepareStatement("SELECT * FROM techno_store.shops where id = ?");
 		preparedStatement.setLong(1, RestorantId);
 
-		Restaurant restaurant = null;
+		Shop shop = null;
 		ResultSet set = preparedStatement.executeQuery();
 		while (set.next()) {
 			long id = set.getLong("id");
 			String restName = set.getString("name");
 			String restLocation = set.getString("location");
 			String phone = set.getString("phone_number");
-			restaurant = new Restaurant(id, restName, restLocation, phone);
+			shop = new Shop(id, restName, restLocation, phone);
 		}
-		if (restaurant != null) {
-			return restaurant;
+		if (shop != null) {
+			return shop;
 		}
-		return restaurant;
+		return shop;
 
 	}
-	public ArrayList<Restaurant> getAllRestaurants() throws SQLException {
+	public ArrayList<Shop> getAllShops() throws SQLException {
 		Connection con = dbManager.getConnection();
-		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM techno_store.restaurants");
-		Restaurant restaurant = null;
-		ArrayList<Restaurant> restaurants = new ArrayList<>();
+		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM techno_store.shops");
+		Shop shop = null;
+		ArrayList<Shop> shops = new ArrayList<>();
 		ResultSet set = preparedStatement.executeQuery();
 		while (set.next()) {
 			long id = set.getLong("id");
 			String name = set.getString("name");
 			String location = set.getString("location");
 			String phoneNumber = set.getString("phone_number");
-			restaurant = new Restaurant(id, name, location, phoneNumber);
-			restaurants.add(restaurant);
+			shop = new Shop(id, name, location, phoneNumber);
+			shops.add(shop);
 
 		}
-		return restaurants;
+		return shops;
 
 	}
 }

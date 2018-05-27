@@ -13,19 +13,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.store.model.Part;
 import com.store.model.Product;
-import com.store.model.Restaurant;
+import com.store.model.Shop;
 import com.store.model.User;
 import com.store.model.UserException;
 import com.store.model.dao.PartDao;
 import com.store.model.dao.ProductDao;
-import com.store.model.dao.RestaurantDao;
+import com.store.model.dao.ShopDao;
 import com.store.model.dao.UserDao;
 import com.store.util.Encrypter;
 
 @Controller
 public class FacebookLoginControler {
 	@Autowired
-	private RestaurantDao restaurant;
+	private ShopDao shop;
 	@Autowired
 	private ProductDao productDao;
 	@Autowired
@@ -57,16 +57,16 @@ public class FacebookLoginControler {
 				request.getSession().setAttribute("user", userDao.getUserByEmail(email));
 				synchronized (servletContext) {
 					if (servletContext.getAttribute("products") == null
-							|| servletContext.getAttribute("restaurants") == null) {
+							|| servletContext.getAttribute("shops") == null) {
 						ArrayList<Product> products = new ArrayList<>();
 						ArrayList<Part> parts = new ArrayList<>();
-						ArrayList<Restaurant> restaurants = new ArrayList<>();
+						ArrayList<Shop> shops = new ArrayList<>();
 						products = productDao.getAllProducts();
 						parts = partDao.getAllParts();
-						restaurants = restaurant.getAllRestaurants();
+						shops = shop.getAllShops();
 						servletContext.setAttribute("products", products);
 						servletContext.setAttribute("parts", parts);
-						servletContext.setAttribute("restaurants", restaurants);
+						servletContext.setAttribute("shops", shops);
 					}
 				}
 				return "address";

@@ -1,13 +1,13 @@
 package com.store.model;
 
-public class Restaurant {
+public class Shop {
 
 	private long id;
 	private String name;
 	private String location;
 	private String phone_number;
 
-	public Restaurant(long id, String name, String location, String phone_number) {
+	public Shop(long id, String name, String location, String phone_number) {
 		this.id = id;
 		this.name = name;
 		this.location = location;
@@ -52,7 +52,7 @@ public class Restaurant {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Restaurant other = (Restaurant) obj;
+		Shop other = (Shop) obj;
 		if (id != other.id)
 			return false;
 		if (location == null) {

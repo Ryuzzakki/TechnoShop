@@ -1,6 +1,5 @@
 package com.store.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -13,32 +12,32 @@ public class Order {
 	//
 	private long id;
 	private User user;
-	private Restaurant restaurant;
+	private Shop shop;
 	private double totalPrice;
 	private LocalDateTime orderDate;
 	private HashMap<Product, Integer> products = new LinkedHashMap<>();
 
-	public Order(User user, Restaurant restaurant, double totalPrice, LocalDateTime orderDate,
-			HashMap<Product, Integer> products) {
+	public Order(User user, Shop shop, double totalPrice, LocalDateTime orderDate,
+                 HashMap<Product, Integer> products) {
 		this.user = user;
-		this.restaurant = restaurant;
+		this.shop = shop;
 		this.totalPrice = totalPrice;
 		this.orderDate = orderDate;
 		this.products = products;
 	}
 
-	public Order(Restaurant restaurant, double totalPrice, LocalDateTime orderDate,
-			HashMap<Product, Integer> products) {
-		this.restaurant = restaurant;
+	public Order(Shop shop, double totalPrice, LocalDateTime orderDate,
+                 HashMap<Product, Integer> products) {
+		this.shop = shop;
 		this.totalPrice = totalPrice;
 		this.orderDate = orderDate;
 		this.products = products;
 	}
 
-	public Order(long id, User user, Restaurant restaurant, double totalPrice, LocalDateTime orderDate) {
+	public Order(long id, User user, Shop shop, double totalPrice, LocalDateTime orderDate) {
 		this.id = id;
 		this.user = user;
-		this.restaurant = restaurant;
+		this.shop = shop;
 		this.totalPrice = totalPrice;
 		this.orderDate = orderDate;
 
@@ -48,9 +47,9 @@ public class Order {
 	 * for creating empty order
 	 * 
 	 */
-	public Order(User user, Restaurant restaurant) {
+	public Order(User user, Shop shop) {
 		this.user = user;
-		this.restaurant = restaurant;
+		this.shop = shop;
 		this.totalPrice = calculateTotalPrice();
 
 	}
@@ -63,8 +62,8 @@ public class Order {
 		return user;
 	}
 
-	public Restaurant getRestaurant() {
-		return restaurant;
+	public Shop getShop() {
+		return shop;
 	}
 
 	public double getTotalPrice() {

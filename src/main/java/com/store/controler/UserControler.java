@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+import com.store.model.Shop;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -24,10 +25,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.store.WebInitializer;
-import com.store.model.Restaurant;
 import com.store.model.User;
 import com.store.model.UserException;
-import com.store.model.dao.RestaurantDao;
+import com.store.model.dao.ShopDao;
 import com.store.model.dao.UserDao;
 import com.store.util.Encrypter;
 
@@ -42,7 +42,7 @@ public class UserControler {
 	private ServletContext servletContext;
 	
 	@Autowired
-	private RestaurantDao restaurantDao;
+	private ShopDao shopDao;
 	
 	@Autowired
 	private UserDao userDao;
@@ -58,14 +58,14 @@ public class UserControler {
 		String pass = encrypter.encrypt(enteredPass);
 		
 		synchronized (servletContext) {
-			if (servletContext.getAttribute("restaurants")==null) {
-				ArrayList<Restaurant> restaurants = new ArrayList<>();
+			if (servletContext.getAttribute("shops")==null) {
+				ArrayList<Shop> shops = new ArrayList<>();
 				try {
-					restaurants = restaurantDao.getAllRestaurants();
+					shops = shopDao.getAllShops();
 				} catch (SQLException e) {
 					return "error";
 				}
-				servletContext.setAttribute("restaurants", restaurants)	;
+				servletContext.setAttribute("shops", shops)	;
 			}
 		}
 		try {
@@ -90,8 +90,8 @@ public class UserControler {
 		if (choice == null || choice.isEmpty()) {
 			return "address";
 		}
-		if (choice.equals("restaurant")) {
-			return "restaurantmap";
+		if (choice.equals("shop")) {
+			return "shopmap";
 		}
 		if (choice.equals("home")) {
 			return "useraddresses";
@@ -220,8 +220,8 @@ public class UserControler {
 	}
 
 	@RequestMapping(value = "/address/map", method = RequestMethod.GET)
-	public String restaurantMap() {
-		return "restaurantmap";
+	public String shopMap() {
+		return "shopmap";
 	}
 
 }

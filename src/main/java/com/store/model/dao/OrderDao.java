@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import com.store.model.Part;
 import com.store.model.Order;
 import com.store.model.Product;
-import com.store.model.Restaurant;
+import com.store.model.Shop;
 import com.store.model.User;
 import com.store.model.UserException;
 
@@ -31,15 +31,15 @@ public class OrderDao {
 	@Autowired
 	private UserDao userDao;
 	@Autowired
-	private RestaurantDao restaurantDao;
+	private ShopDao shopDao;
 	@Autowired
 	private RecipeDao recipeDao;
 
-	// get user and restaurant from session
-	public long createOrder(User u, Restaurant r, String address) throws SQLException {
+	// get user and shop from session
+	public long createOrder(User u, Shop r, String address) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con.prepareStatement(
-				"insert into orders (user_id,restaurant_id, total_price, order_date, delivery_address) values(?,?,?,now(),?)",
+				"insert into orders (user_id,shop_id, total_price, order_date, delivery_address) values(?,?,?,now(),?)",
 				Statement.RETURN_GENERATED_KEYS);
 
 		preparedStatement.setLong(1, u.getId());
@@ -57,7 +57,7 @@ public class OrderDao {
 
 	}
 
-	public void makeFullOrder(String deliveryAddress, User u, Restaurant r, HashMap<Product, Integer> map, double price)
+	public void makeFullOrder(String deliveryAddress, User u, Shop r, HashMap<Product, Integer> map, double price)
 			throws SQLException, UserException {
 		dbManager.getConnection().setAutoCommit(false);
 		try {
@@ -118,10 +118,10 @@ public class OrderDao {
 		while (set.next()) {
 			long orderId = set.getLong("id");
 			long userId = user_id;
-			long restorantId = set.getLong("restaurant_id");
+			long restorantId = set.getLong("shop_id");
 			double totalPrice = set.getDouble("total_price");
 			LocalDateTime dateTime = set.getTimestamp("order_date").toLocalDateTime();
-			Order order = new Order(userDao.getUser(userId), restaurantDao.getRestaurant(restorantId), totalPrice,
+			Order order = new Order(userDao.getUser(userId), shopDao.getShop(restorantId), totalPrice,
 					dateTime, orderDetailsDao.getAllProductsFromOrder(orderId));
 			orders.add(order);
 
@@ -140,10 +140,10 @@ public class OrderDao {
 		while (set.next()) {
 			long orderId = set.getLong("id");
 			long userId = set.getLong("user_id");
-			long restorantId = set.getLong("restaurant_id");
+			long restorantId = set.getLong("shop_id");
 			double totalPrice = set.getDouble("total_price");
 			LocalDateTime dateTime = set.getTimestamp("order_date").toLocalDateTime();
-			order = new Order(orderId, userDao.getUser(userId), restaurantDao.getRestaurant(restorantId), totalPrice,
+			order = new Order(orderId, userDao.getUser(userId), shopDao.getShop(restorantId), totalPrice,
 					dateTime);
 		}
 

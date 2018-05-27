@@ -13,16 +13,13 @@ import java.util.HashSet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.store.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.store.model.Part;
-import com.store.model.Order;
-import com.store.model.Product;
-import com.store.model.Restaurant;
-import com.store.model.User;
+import com.store.model.Shop;
 import com.store.model.dao.ProductDao;
 
 @Controller
@@ -66,12 +63,12 @@ public class ProductControler {
 			return "login";
 		}
 		User currentUser = (User) request.getSession().getAttribute("user");
-		Restaurant currentRestaurant = (Restaurant) request.getSession().getAttribute("restaurant");
+		Shop currentShop = (Shop) request.getSession().getAttribute("shop");
 		if (request.getSession().getAttribute("order") == null) {
-			if (currentRestaurant == null) {
+			if (currentShop == null) {
 				return "address";
 			}
-			Order order = new Order(currentUser, currentRestaurant);
+			Order order = new Order(currentUser, currentShop);
 			request.getSession().setAttribute("order", order);
 		}
 		String id = request.getParameter("productId");
