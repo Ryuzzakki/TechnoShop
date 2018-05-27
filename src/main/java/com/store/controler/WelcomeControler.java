@@ -64,7 +64,7 @@ public class WelcomeControler {
 			}
 		}
 		
-		return "redirect:pizzas";
+		return "redirect:computers";
 
 	}
 	
@@ -88,8 +88,8 @@ public class WelcomeControler {
 	}
 
 
-	@RequestMapping(value = "/pizzas", method = RequestMethod.GET)
-	public String goToMenuWithPizzas(HttpServletRequest req) {
+	@RequestMapping(value = "/computers", method = RequestMethod.GET)
+	public String goToMenuWithComputers(HttpServletRequest req) {
 		if (servletContext.getAttribute("products") == null) {
 			return "redirect:main";
 		}
@@ -97,8 +97,8 @@ public class WelcomeControler {
 		return "categories";
 
 	}
-	@RequestMapping(value = "/drinks", method = RequestMethod.GET)
-	public String goToMenuWithDrinks(HttpServletRequest req) {
+	@RequestMapping(value = "/phones", method = RequestMethod.GET)
+	public String goToMenuWithPhones(HttpServletRequest req) {
 		if (servletContext.getAttribute("products") == null) {
 			return "redirect:main";
 		}
@@ -106,8 +106,8 @@ public class WelcomeControler {
 		return "categories";
 
 	}
-	@RequestMapping(value = "/sauses", method = RequestMethod.GET)
-	public String goToMenuWithSauses(HttpServletRequest req) {
+	@RequestMapping(value = "/others", method = RequestMethod.GET)
+	public String goToMenuWithOthers(HttpServletRequest req) {
 		if (servletContext.getAttribute("products") == null) {
 			return "redirect:main";
 		}

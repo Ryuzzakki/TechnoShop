@@ -46,7 +46,7 @@ public class ProductControler {
 		}
 
 		if (pictureUrl == null || pictureUrl.isEmpty()) {
-			pictureUrl = "defaultPizza.png";
+			pictureUrl = "defaultComputer.png";
 		}
 		try {
 			File myFile = new File(PICTURE_URL + pictureUrl);
@@ -112,14 +112,14 @@ public class ProductControler {
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public String showProductInCart(HttpServletRequest req, HttpServletResponse resp) {
 		if (req.getSession().getAttribute("order") == null) {
-			return "redirect: pizzas";
+			return "redirect: computers";
 		}
 		Order order = (Order) req.getSession().getAttribute("order");
 		if (req.getSession().getAttribute("user") == null) {
 			return "main";
 		}
 		if (order.getProducts().size() == 0) {
-			return "redirect: pizzas";
+			return "redirect: computers";
 		}
 		HashMap<Product, Integer> map = order.getProducts();
 		double totalPrice = order.calculateTotalPrice();

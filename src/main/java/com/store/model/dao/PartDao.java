@@ -20,7 +20,7 @@ public class PartDao {
 	public Part getPart(long partId) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("SELECT * FROM pizza_store.parts where id = ?");
+				.prepareStatement("SELECT * FROM techno_store.parts where id = ?");
 		preparedStatement.setLong(1, partId);
 		Part part = null;
 		ResultSet set = preparedStatement.executeQuery();
@@ -38,7 +38,7 @@ public class PartDao {
 
 	public ArrayList<Part> getAllParts() throws SQLException {
 		Connection con =dbManager.getConnection();
-		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.parts");
+		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM techno_store.parts");
 		Part ing = null;
 		ArrayList<Part> parts = new ArrayList<>();
 		ResultSet set = preparedStatement.executeQuery();

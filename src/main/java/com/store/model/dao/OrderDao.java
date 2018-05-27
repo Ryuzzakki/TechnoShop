@@ -99,7 +99,7 @@ public class OrderDao {
 	public void updateOrderPrice(double price, long orderId) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("UPDATE pizza_store.orders SET total_price =? WHERE id=?");
+				.prepareStatement("UPDATE techno_store.orders SET total_price =? WHERE id=?");
 		preparedStatement.setDouble(1, price);
 		preparedStatement.setDouble(2, orderId);
 		preparedStatement.executeUpdate();
@@ -109,7 +109,7 @@ public class OrderDao {
 	public HashSet<Order> getAllOrders(long user_id) throws SQLException, UserException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("SELECT * FROM pizza_store.orders where user_id = ?");
+				.prepareStatement("SELECT * FROM techno_store.orders where user_id = ?");
 		preparedStatement.setLong(1, user_id);
 
 		HashSet<Order> orders = new HashSet<>();
@@ -132,7 +132,7 @@ public class OrderDao {
 
 	public Order getOrderById(long id) throws SQLException, UserException {
 		Connection con = dbManager.getConnection();
-		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.orders where id  =?");
+		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM techno_store.orders where id  =?");
 		preparedStatement.setLong(1, id);
 
 		ResultSet set = preparedStatement.executeQuery();

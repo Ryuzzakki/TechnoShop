@@ -11,7 +11,7 @@ public class DBManager {
 
 	final String DB_IP = "127.0.0.1";
 	final String DB_PORT = "3306";
-	final String DB_DBNAME = "pizza_store";
+	final String DB_DBNAME = "techno_store";
 	final String DB_USER = "root";
 	final String DB_PASS = "1234";
 

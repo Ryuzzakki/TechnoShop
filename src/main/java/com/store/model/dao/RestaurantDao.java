@@ -20,7 +20,7 @@ public class RestaurantDao {
 	public Restaurant getRestaurant(long RestorantId) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("SELECT * FROM pizza_store.restaurants where id = ?");
+				.prepareStatement("SELECT * FROM techno_store.restaurants where id = ?");
 		preparedStatement.setLong(1, RestorantId);
 
 		Restaurant restaurant = null;
@@ -40,7 +40,7 @@ public class RestaurantDao {
 	}
 	public ArrayList<Restaurant> getAllRestaurants() throws SQLException {
 		Connection con = dbManager.getConnection();
-		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.restaurants");
+		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM techno_store.restaurants");
 		Restaurant restaurant = null;
 		ArrayList<Restaurant> restaurants = new ArrayList<>();
 		ResultSet set = preparedStatement.executeQuery();

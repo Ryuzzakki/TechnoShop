@@ -22,7 +22,7 @@ public class ProductDao {
 
 	public Product getProduct(long proId) throws SQLException {
 		Connection con = dbManager.getConnection();
-		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.products where id = ?");
+		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM techno_store.products where id = ?");
 		preparedStatement.setLong(1, proId);
 		Product product = null;
 		ResultSet set = preparedStatement.executeQuery();
@@ -43,7 +43,7 @@ public class ProductDao {
 
 	public ArrayList<Product> getAllProducts() throws SQLException {
 		Connection con = dbManager.getConnection();
-		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.products");
+		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM techno_store.products");
 		Product product = null;
 		ArrayList<Product> products = new ArrayList<>();
 		ResultSet set = preparedStatement.executeQuery();

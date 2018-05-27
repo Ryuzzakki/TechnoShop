@@ -72,7 +72,7 @@ public class PartControler {
 	}
 
 	@RequestMapping(value = "/chooser", method = RequestMethod.POST)
-	public String pizzaFormChooser(HttpServletRequest request) {
+	public String productFormChooser(HttpServletRequest request) {
 		if (request.getSession().getAttribute("order") == null) {
 			return "login";
 		}

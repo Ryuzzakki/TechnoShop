@@ -35,7 +35,7 @@ public class DeliveryControler {
 	}
 
 	@RequestMapping(value = "/pickFromRestaurant", method = RequestMethod.POST)
-	public String getPizzaFromRestaurant(HttpServletRequest request) {
+	public String getProductFromRestaurant(HttpServletRequest request) {
 		if (request.getSession().getAttribute("user") == null) {
 			return "login";
 		}

@@ -64,7 +64,7 @@ public class UserDao {
 	public void addAddressForUser(long user_id, String address) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con.prepareStatement(
-				"INSERT INTO pizza_store.user_address (user_id, location) VALUES (?,?)",
+				"INSERT INTO techno_store.user_address (user_id, location) VALUES (?,?)",
 				Statement.RETURN_GENERATED_KEYS);
 
 		preparedStatement.setLong(1, user_id);
@@ -76,7 +76,7 @@ public class UserDao {
 	public void removeAddressForUser(String location) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("DELETE FROM pizza_store.user_address WHERE location=?");
+				.prepareStatement("DELETE FROM techno_store.user_address WHERE location=?");
 
 		preparedStatement.setString(1, location);
 		preparedStatement.executeUpdate();
@@ -86,7 +86,7 @@ public class UserDao {
 	public String getAdrress(long id) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("SELECT * FROM pizza_store.user_address where id = ?");
+				.prepareStatement("SELECT * FROM techno_store.user_address where id = ?");
 		preparedStatement.setLong(1, id);
 		String address = null;
 		ResultSet set = preparedStatement.executeQuery();
@@ -101,7 +101,7 @@ public class UserDao {
 	public HashSet<String> getAllAdrress(long user_id) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("SELECT * FROM pizza_store.user_address where user_id = ?");
+				.prepareStatement("SELECT * FROM techno_store.user_address where user_id = ?");
 		preparedStatement.setLong(1, user_id);
 		HashSet<String> address = new HashSet<>();
 		ResultSet set = preparedStatement.executeQuery();
@@ -115,7 +115,7 @@ public class UserDao {
 
 	public User getUser(long id) throws SQLException, UserException {
 		Connection con = dbManager.getConnection();
-		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.users where id = ?");
+		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM techno_store.users where id = ?");
 		preparedStatement.setLong(1, id);
 		User user = null;
 		ResultSet set = preparedStatement.executeQuery();
@@ -148,7 +148,7 @@ public class UserDao {
 
 	public User getUserByEmail(String userEmail) throws SQLException, UserException {
 		Connection con = dbManager.getConnection();
-		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.users where email = ?");
+		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM techno_store.users where email = ?");
 		preparedStatement.setString(1, userEmail);
 		User user = null;
 		ResultSet set = preparedStatement.executeQuery();
@@ -177,7 +177,7 @@ public class UserDao {
 	public void insertAvatar(String userEmail, String url) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("UPDATE pizza_store.users SET avatarUrl=? WHERE email=?");
+				.prepareStatement("UPDATE techno_store.users SET avatarUrl=? WHERE email=?");
 		preparedStatement.setString(1, url);
 		preparedStatement.setString(2, userEmail);
 		preparedStatement.executeUpdate();

@@ -23,8 +23,8 @@ public class OrderDetailsDao {
 	public void addProductToOrderDetails(Product product, Order order, int quantity) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con.prepareStatement(
-				"INSERT INTO pizza_store.order_details (order_id, product_id, quantity,size,dough) "
-						+ "VALUES(?, (SELECT id FROM pizza_store.products WHERE name = ?),?,?,? );",
+				"INSERT INTO techno_store.order_details (order_id, product_id, quantity,size,dough) "
+						+ "VALUES(?, (SELECT id FROM techno_store.products WHERE name = ?),?,?,? );",
 				Statement.RETURN_GENERATED_KEYS);
 
 		preparedStatement.setLong(1, order.getId());
@@ -41,7 +41,7 @@ public class OrderDetailsDao {
 	public HashMap<Product, Integer> getAllProductsFromOrder(long order_id) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("SELECT * FROM pizza_store.order_details where order_id = ?");
+				.prepareStatement("SELECT * FROM techno_store.order_details where order_id = ?");
 		preparedStatement.setLong(1, order_id);
 		HashMap<Product, Integer> products = new HashMap<>();
 		ResultSet set = preparedStatement.executeQuery();

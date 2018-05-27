@@ -23,7 +23,7 @@
 
 <div id="login-box">
     <div class="left">
-        <h2>Pizza Store</h2>
+        <h2>Techno Store</h2>
         <h1>Sign up</h1>
         <form:form action="register" commandName="userNew">
 

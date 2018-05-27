@@ -45,16 +45,16 @@
 
             <div id="myDropdown" class="dropdown-content">
 
-                <form action="pizzas">
+                <form action="computers">
                     <input type="submit" value="Computers">
                 </form>
 
-                <form action="drinks">
+                <form action="phones">
                     <input type="submit" value="Phones">
                 </form>
 
 
-                <form action="sauses">
+                <form action="others">
                     <input type="submit" value="Others">
                 </form>
 
