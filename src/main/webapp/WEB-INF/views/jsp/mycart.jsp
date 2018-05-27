@@ -23,7 +23,13 @@
 
 <!-- <table border="1"> -->
 
+
 <div class="container">
+
+    <div class="alert alert-info">
+        <strong>Discount Info!</strong> For every 100 leva spent: Discount 10% ! ( Max 30% Discount )
+    </div>
+
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <table class="table table-hover">
@@ -81,10 +87,10 @@
                     <td class="col-sm-1 col-md-1">
                         <!-- if trqbva> -->
                         <c:if test="${ product.key.category == 1  }">
-                        <form action="modify" method="POST">
-                            <input type="hidden" name="productId" value="${ product.key.id }"/>
-                            <input type="submit" class="btn btn-primary" name="cart_submit" value="Modify"/>
-                        </form>
+                            <form action="modify" method="POST">
+                                <input type="hidden" name="productId" value="${ product.key.id }"/>
+                                <input type="submit" class="btn btn-primary" name="cart_submit" value="Modify"/>
+                            </form>
                         </c:if>
                     </td>
                 </tr>
@@ -95,12 +101,15 @@
                     <td>  </td>
                     <td>  </td>
                     <c:if test="${ sessionScope.totalPrice != sessionScope.totalPriceWithDiscount }">
-                        <td class="text-right"> <h5><strong> Old :  <span style="text-decoration: line-through;"><c:out value="${ sessionScope.totalPrice }"></c:out></span> </strong> </h5> </td>
-                           <td class="text-right"> <h5><strong> Price : <c:out value="${ sessionScope.totalPriceWithDiscount }"></c:out> </strong> </h5></td>
+                        <td class="text-right"><h5><strong> Old : <span style="text-decoration: line-through;"><c:out
+                                value="${ sessionScope.totalPrice }"></c:out></span> </strong></h5></td>
+                        <td class="text-right"><h5><strong> Price : <c:out
+                                value="${ sessionScope.totalPriceWithDiscount }"></c:out> </strong></h5></td>
                     </c:if>
                     <c:if test="${ sessionScope.totalPrice == sessionScope.totalPriceWithDiscount }">
                         <td><h5>Subtotal</h5></td>
-                        <td class="text-right"><h5><strong> <c:out value="${ sessionScope.totalPrice }"></c:out></strong></h5></td>
+                        <td class="text-right"><h5><strong> <c:out
+                                value="${ sessionScope.totalPrice }"></c:out></strong></h5></td>
                     </c:if>
                     <td>
                         <form action="makeOrder" method="post">

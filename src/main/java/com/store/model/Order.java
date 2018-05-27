@@ -144,13 +144,13 @@ public class Order {
 	}
 
 	public double discount(double price) {
-		if (price > 10 && price <= 20) {
+		if (price > 100 && price <= 200) {
 			price -= price * 0.1;
 		}
-		if (price > 20 && price <= 30) {
+		if (price > 200 && price <= 300) {
 			price -= price * 0.2;
 		}
-		if (price > 30) {
+		if (price > 300) {
 			price -= price * 0.3;
 		}
 		price = Math.round(price * 100);

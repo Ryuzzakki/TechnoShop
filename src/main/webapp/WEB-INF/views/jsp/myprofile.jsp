@@ -34,7 +34,7 @@
         </li>
         <li>
             <form action="main">
-                <input class="btn" type="submit" value="Menu">
+                <input class="btn" type="submit" value="Products">
             </form>
         </li>
         <li>

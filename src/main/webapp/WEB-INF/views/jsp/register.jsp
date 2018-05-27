@@ -16,10 +16,13 @@
 </head>
 <body>
 
-
-<c:if test="${ requestScope.userExists == true }">
-    <h2>User already exists!</h2>
-</c:if>
+<div class="container">
+    <c:if test="${ requestScope.userExists == true }">
+        <div class="alert alert-info">
+            <strong>Info!</strong> User already exists!
+        </div>
+    </c:if>
+</div>
 
 <div id="login-box">
     <div class="left">
@@ -47,7 +50,7 @@
             <form:errors path="email" cssclass="error" style="color:red"></form:errors>
             <form:input path="email" placeholder="Email"/>
 
-            <input type="submit"  class="btn" value="Register"/>
+            <input type="submit" class="btn" value="Register"/>
 
 
         </form:form>

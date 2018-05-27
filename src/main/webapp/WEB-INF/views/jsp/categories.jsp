@@ -40,13 +40,20 @@
 </c:if>
 
 
-<c:if test="${ requestScope.favorite == true }">
-    <h4>Successfull add to favorites!</h4>
-</c:if>
-<c:if test="${ requestScope.hasFavorite == true }">
-    <h4>Already in favorites!</h4>
-</c:if>
 <div class="container">
+
+    <c:if test="${ requestScope.favorite == true }">
+        <div class="alert alert-info">
+            <strong>Info!</strong> Item successfully added to favorites!
+        </div>
+    </c:if>
+    <c:if test="${ requestScope.hasFavorite == true }">
+        <div class="alert alert-warning">
+            <strong>Info!</strong> Item already in favorites!
+        </div>
+    </c:if>
+
+
     <div class="columns">
         <div class="row">
             <c:forEach items="${applicationScope.products}" var="product">
@@ -66,7 +73,7 @@
 
                                     <h4 class="title">${ product.name }</h4>
                                     <p class="desc">Price: ${ product.price }</p>
-                                    <div class="rating-wrap">
+                                    <div class="rating-wrap" style="min-height: 50px;">
                                         <div class="label-rating"><c:forEach items="${product.parts}" var="ingr">
                                             <c:out value="${ ingr.name }"></c:out>
                                         </c:forEach></div>
