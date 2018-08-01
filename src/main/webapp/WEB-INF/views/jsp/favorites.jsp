@@ -30,7 +30,7 @@
             <td>
                 <form action="removeFav" method="post">
                     <input type="hidden" name="productId" value="${ product.id }"/>
-                    <input type="submit" name="removeproduct" value="Remove Fav"/>
+                    <input class="btn-info" type="submit" name="removeproduct" value="Remove Fav"/>
                 </form>
             </td>
         </tr>

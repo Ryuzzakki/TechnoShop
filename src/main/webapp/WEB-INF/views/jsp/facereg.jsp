@@ -7,6 +7,10 @@
 <link href="<c:url value="/css/styles2.css" />" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Facebook Register</title>
+	<script src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/myscript.js"></script>
+	<link href="/js/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
  <center>

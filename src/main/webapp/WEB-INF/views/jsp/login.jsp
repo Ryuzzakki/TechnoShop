@@ -4,10 +4,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <script src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/myscript.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="/js/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="/js/bootstrap.min.js"></script>
+
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <link href="<c:url value="/css/styles2.css" />" rel="stylesheet"

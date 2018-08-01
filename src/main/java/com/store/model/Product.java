@@ -13,7 +13,7 @@ public class Product {
 	private String productPicture;
 	private int category = 0;
 	private String size = "medium";
-	private String dough = "normal";
+	private String pack = "normal";
 
 	public Product(String name, double price) {
 		this.name = name;
@@ -33,13 +33,13 @@ public class Product {
 		this.category = category;
 	}
 
-	public Product(long id, String name, double price, int category, String size, String dough) {
+	public Product(long id, String name, double price, int category, String size, String pack) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.category = category;
 		this.size = size;
-		this.dough = dough;
+		this.pack = pack;
 	}
 
 	public String getName() {
@@ -113,8 +113,8 @@ public class Product {
 		this.category = category;
 	}
 
-	public String getDough() {
-		return dough;
+	public String getPack() {
+		return pack;
 	}
 
 	public String getSize() {
@@ -125,8 +125,8 @@ public class Product {
 		this.size = size;
 	}
 
-	public void setDough(String dough) {
-		this.dough = dough;
+	public void setPack(String pack) {
+		this.pack = pack;
 	}
 
 }

@@ -78,7 +78,7 @@ public class PartControler {
 		}
 		String currentId = request.getParameter("productId");
 		String size = request.getParameter("size");
-		String dough = request.getParameter("dough");
+		String pack = request.getParameter("pack");
 		try {
 			Product product = productDao.getProduct(Long.valueOf(currentId));
 			if (request.getSession().getAttribute("modifiedProduct" + currentId) == null) {
@@ -89,7 +89,7 @@ public class PartControler {
 		}
 		Product product = (Product) request.getSession().getAttribute("modifiedProduct" + currentId);
 		product.setSize(size);
-		product.setDough(dough);
+		product.setPack(pack);
 		return "redirect: cart";
 	}
 

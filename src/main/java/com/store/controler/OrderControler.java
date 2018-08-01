@@ -51,6 +51,8 @@ public class OrderControler {
 				req.getSession().setAttribute("user", userDao.getUserByEmail(u.getEmail()));
 				req.getSession().setAttribute("order", new Order(u, r));
 				req.setAttribute("order", true);
+				req.setAttribute("orderPrice", price);
+				req.setAttribute("orderAddress", deliveryAddress);
 			}
 		} catch (SQLException | UserException e) {
 			return "error";

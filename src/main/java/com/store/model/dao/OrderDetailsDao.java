@@ -23,7 +23,7 @@ public class OrderDetailsDao {
 	public void addProductToOrderDetails(Product product, Order order, int quantity) throws SQLException {
 		Connection con = dbManager.getConnection();
 		PreparedStatement preparedStatement = con.prepareStatement(
-				"INSERT INTO techno_store.order_details (order_id, product_id, quantity,size,dough) "
+				"INSERT INTO techno_store.order_details (order_id, product_id, quantity,size,pack) "
 						+ "VALUES(?, (SELECT id FROM techno_store.products WHERE name = ?),?,?,? );",
 				Statement.RETURN_GENERATED_KEYS);
 
@@ -31,7 +31,7 @@ public class OrderDetailsDao {
 		preparedStatement.setString(2, product.getName());
 		preparedStatement.setLong(3, quantity);
 		preparedStatement.setString(4, product.getSize());
-		preparedStatement.setString(5, product.getDough());
+		preparedStatement.setString(5, product.getPack());
 		preparedStatement.executeUpdate();
 
 	}
@@ -49,10 +49,10 @@ public class OrderDetailsDao {
 			long product_id = set.getLong("product_id");
 			int productQuantity = set.getInt("quantity");
 			String size = set.getString("size");
-			String dough = set.getString("dough");
+			String pack = set.getString("pack");
 			Product currentProduct = productDao.getProduct(product_id);
 			Product product = new Product(currentProduct.getId(), currentProduct.getName(), currentProduct.getPrice(),
-					currentProduct.getCategory(), size, dough);
+					currentProduct.getCategory(), size, pack);
 			if (products.containsKey(product)) {
 				int quant = products.get(product);
 				products.put(product, quant + productQuantity);

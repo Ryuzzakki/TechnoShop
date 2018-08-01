@@ -43,7 +43,7 @@
                     <td>${productEntry.key.name }</td>
                     <td>${productEntry.value }</td>
                     <c:if test="${ productEntry.key.category == 1  }">
-                        <td>${productEntry.key.dough }</td>
+                        <td>${productEntry.key.pack }</td>
                         <td>${productEntry.key.size }</td>
                     </c:if>
 

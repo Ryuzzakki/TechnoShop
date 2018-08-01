@@ -45,10 +45,7 @@
                     <th></th>
                 </tr>
                 </thead>
-
                 <c:forEach var="product" items="${sessionScope.productsInCart}">
-
-
                 <tbody>
                 <tr>
                     <td class="col-sm-8 col-md-6">
@@ -65,8 +62,6 @@
                             <input type="submit" class="form-control" name="cart_submit" value="+"/>
                         </form>
                     </td>
-
-
                     <td>
                         <c:forEach var="part" items="${product.key.parts}">
                             <c:out value="${part.name }"></c:out>
@@ -82,7 +77,6 @@
                             <input type="submit" class="form-control" name="cart_submit" value="-"/>
                         </form>
                     </td>
-
                     <td class="col-sm-1 col-md-1"><c:out value="${ product.value }"></c:out></td>
                     <td class="col-sm-1 col-md-1">
                         <!-- if trqbva> -->

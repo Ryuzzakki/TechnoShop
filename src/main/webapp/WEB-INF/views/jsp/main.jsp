@@ -26,8 +26,23 @@
     <c:if test="${ requestScope.order == true }">
         <div class="alert alert-success">
             <strong>Success!</strong> Order made successfully.
+            <p>You need to pay ${requestScope.orderPrice} Leva.</p>
+            <p id ="address"></p>
+            <script>
+                var address = "${requestScope.orderAddress}";
+                var isShop = address.split(" ").length===1;
+                var element = document.getElementById("address");
+                if(isShop){
+                    element.innerHTML = "You will need to get products from our shop in " + address + ". Products will be reserved for you.";
+                }else{
+                    element.innerHTML = "You will get delivery to " + address + " in 3 to 5 working days.";
+                }
+            </script>
+
         </div>
     </c:if>
+
+
 </div>
 
 
